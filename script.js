@@ -1,7 +1,8 @@
-const tg = window.Telegram.WebApp;
-tg.ready();  // Сообщаем Telegram, что приложение загрузилось
-tg.expand(); // Разворачиваем игру на весь экран телефона
-
+const tg = window.Telegram ? window.Telegram.WebApp : null;
+if (tg) {
+    tg.ready();
+    tg.expand();
+}
 
 let wordsDB = []; // База слов загрузится сюда из файла words.json
 
@@ -74,15 +75,16 @@ function checkLetter(letter, btn) {
 
     if (targetWord.includes(letter)) {
         btn.classList.add("correct");
-        if (tg.HapticFeedback) tg.HapticFeedback.impactOccurred("light"); // Лёгкий стук при успехе
+        if (tg && tg.HapticFeedback) tg.HapticFeedback.impactOccurred("light"); // Лёгкий стук при успехе
     } else {
         btn.classList.add("wrong");
         mistakes++;
-        if (tg.HapticFeedback) tg.HapticFeedback.notificationOccurred("error"); // Вибрация ошибки
+        if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred("error"); // Вибрация ошибки
     }
 
     updateScreen();
 }
+
 
 function useHint() {
     if (score < 15) return;
