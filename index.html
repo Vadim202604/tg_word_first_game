@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Угадай слово</title>
+    <!-- Подключаем файл со стилями -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="status-bar">
+        <span id="level-display">Уровень: 1</span>
+        <span id="lives">❤️ 0 / 5</span>
+        <span id="score">⭐ 30</span>
+    </div>
+
+    <div id="riddle-box">
+        <p id="riddle-text">Загрузка...</p>
+    </div>
+
+    <div id="word-container"></div>
+
+    <button id="hint-btn" class="main-btn" onclick="useHint()">💡 Подсказка (-15 очков)</button>
+
+    <div id="keyboard"></div>
+
+    <div id="modal-overlay">
+        <div id="modal-card">
+            <h2 id="modal-title">Заголовок</h2>
+            <p id="modal-text">Текст сообщения</p>
+            <button id="modal-btn" class="main-btn" onclick="closeModalAndContinue()">Дальше</button>
+        </div>
+    </div>
+
+    <!-- Подключаем файл с логикой игры -->
+    <script src="script.js"></script>
+</body>
+</html>
